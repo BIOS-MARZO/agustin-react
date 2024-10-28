@@ -3,6 +3,7 @@ import { TodoProvider } from "/src/components/TodoContext.jsx"; // Ajusta la rut
 import TodoList from "/src/components/TodoList.jsx"; // Ajusta la ruta según tu estructura
 import AddTodoForm from "/src/components/AddTodoForm.jsx"; // Asegúrate de incluir tu componente para agregar tareas
 import styles from "./App.module.css"; // Importa el módulo CSS
+import EditTodoForm from "/src/components/EditTodoForm.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <AddTodoForm />
             <Routes>
               <Route path="/" element={<TodoList />} />
+              <Route path="/edit/:id" element={<EditTodoForm />} />
             </Routes>
           </div>
         </div>

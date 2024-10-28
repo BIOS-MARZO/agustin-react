@@ -21,6 +21,8 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  width: 35px;
+  height: 30px;
 }
 
 .activo {
@@ -37,4 +39,16 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  width: 35px;
+  height: 30px;
+}
+
+.botonEditar {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 35px;
+  height: 30px;
 }

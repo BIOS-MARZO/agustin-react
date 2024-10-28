@@ -9,8 +9,9 @@ const ADD_TODO = "ADD_TODO";
 const TOGGLE_COMPLETE = "TOGGLE_COMPLETE";
 const DELETE_TODO = "DELETE_TODO";
 const SET_TODOS = "SET_TODOS";
+const EDIT_TODO = "EDIT_TODO"; // Nueva acción para editar
 
-// 3. Crear reducer
+// Reducer
 function todoReducer(state, action) {
   switch (action.type) {
     case ADD_TODO:
@@ -28,6 +29,12 @@ function todoReducer(state, action) {
       return state.filter((todo) => todo.id !== action.payload);
     case SET_TODOS:
       return action.payload;
+    case EDIT_TODO: // Maneja la acción EDIT_TODO
+      return state.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, text: action.payload.text }
+          : todo
+      );
     default:
       return state;
   }
@@ -58,7 +65,12 @@ export function TodoProvider({ children }) {
     dispatch({ type: DELETE_TODO, payload: id });
   }
 
-  const value = { todos, addTodo, toggleComplete, deleteTodo };
+  function editTodo(id, text) {
+    // Nueva función editTodo
+    dispatch({ type: EDIT_TODO, payload: { id, text } });
+  }
+
+  const value = { todos, addTodo, toggleComplete, deleteTodo, editTodo };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 }

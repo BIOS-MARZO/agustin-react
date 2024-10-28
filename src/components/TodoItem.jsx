@@ -1,6 +1,7 @@
-import { FaCheck, FaTrash } from "react-icons/fa";
+import { FaCheck, FaTrash, FaEdit } from "react-icons/fa";
 import PropTypes from "prop-types";
 import styles from "./Styles/TodoItem.module.css";
+import { Link } from "react-router-dom"; // Importa Link de react-router-dom
 
 function TodoItem({ todo, toggleComplete, deleteTodo }) {
   const handleToggleComplete = () => {
@@ -26,6 +27,11 @@ function TodoItem({ todo, toggleComplete, deleteTodo }) {
         >
           <FaCheck />
         </button>
+        <Link to={`/edit/${todo.id}`} aria-label="Editar tarea">
+          <button className={styles.botonEditar}>
+            <FaEdit />
+          </button>
+        </Link>
 
         <button
           className={styles.botonEliminar}
