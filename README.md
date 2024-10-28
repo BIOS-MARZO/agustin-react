@@ -1,49 +1,92 @@
-Aquí tienes el texto en un solo bloque para que puedas copiar y pegar fácilmente:
+Perfecto. Si el proyecto está configurado con **Vite** en lugar de Create React App, solo es necesario ajustar algunos comandos en el `README.md`. Aquí tienes el ejemplo actualizado:
 
 ---
 
-# Mi Lista de Tareas
+## Ejemplo de `README.md` para un Proyecto To-Do List en React con Vite
 
-Una aplicación de lista de tareas simple y funcional construida con React. Este proyecto permite a los usuarios agregar, marcar como completadas, y eliminar tareas, además de guardar el estado de la lista en el almacenamiento local para que sea persistente entre sesiones.
+````markdown
+# To-Do List
+
+Una aplicación simple de **To-Do List** desarrollada en React y configurada con **Vite**. Permite a los usuarios agregar, marcar como completadas y eliminar tareas. Este proyecto es ideal para comprender los conceptos básicos de React, como componentes, estado y eventos, usando Vite para un entorno de desarrollo más rápido.
 
 ## Características
 
-- Agregar y eliminar tareas
-- Marcar tareas como completadas
-- Almacenamiento en `localStorage` para persistencia
+- **Añadir Tareas:** Permite agregar nuevas tareas a la lista.
+- **Marcar Completadas:** Posibilidad de marcar tareas como completadas.
+- **Eliminar Tareas:** Función para eliminar tareas individuales.
+- **Interfaz Intuitiva:** Fácil de usar y adaptada para dispositivos móviles.
 
-## Instalación
+## Requisitos Previos
 
-Sigue estos pasos para ejecutar la aplicación en tu entorno local:
+Asegúrate de tener instalados los siguientes programas antes de comenzar:
 
-1. **Clona este repositorio:**
+- **Node.js**: [Descargar aquí](https://nodejs.org/)
+- **npm**: Node Package Manager, que viene incluido con Node.js.
+
+## Instrucciones de Instalación
+
+1. **Clonar el Repositorio:**
+   ```bash
+   git clone git@github.com:AgustinVelazquez0/ReactToDoList.git
+   ```
+````
+
+2. **Navegar al Directorio del Proyecto:**
 
    ```bash
-   git clone https://github.com/tu-usuario/mi-lista-de-tareas.git
-   cd mi-lista-de-tareas
+   cd ReactToDoList
    ```
 
-2. **Instala las dependencias:**
+3. **Instalar Dependencias:**
+   Ejecuta el siguiente comando para instalar todas las dependencias necesarias:
 
    ```bash
    npm install
    ```
 
-3. **Ejecuta la aplicación:**
-
+4. **Ejecutar la Aplicación en Modo de Desarrollo:**
+   Inicia la aplicación con el comando:
    ```bash
-   npm start
+   npm run dev
    ```
+   Luego, abre `http://localhost:3000` en tu navegador para ver la aplicación en funcionamiento.
 
-   Esto abrirá la aplicación en modo de desarrollo en [http://localhost:3000](http://localhost:3000).
+## Estructura del Proyecto
 
-## Uso
+- **`src/`**: Contiene todos los archivos de la aplicación.
+  - **`components/`**: Componentes de React como `TaskItem`, `TaskList`, y `AddTask`.
+  - **`App.jsx`**: Componente principal de la aplicación.
+  - **`main.jsx`**: Punto de entrada de React.
 
-- En la página principal, puedes ver las tareas actuales, agregar nuevas tareas en el formulario y eliminar o marcar como completadas las tareas existentes.
-- La aplicación guarda automáticamente el estado de la lista en `localStorage`, de modo que cuando vuelvas a cargar la página, las tareas anteriores se mantendrán.
+## Tecnologías Utilizadas
 
-## Tecnologías
+- **React**: Librería de JavaScript para construir la interfaz de usuario.
+- **Vite**: Herramienta de construcción rápida para desarrollo.
+- **CSS**: Estilos básicos para la interfaz.
+- **JavaScript**: Lógica de la aplicación.
 
-- React
-- React Router para navegación
-- Context API para gestión de estado
+## Próximas Mejoras
+
+- **Filtros de Búsqueda**: Añadir un filtro para buscar tareas por nombre o estado (completado/pendiente).
+- **Almacenamiento Local**: Guardar las tareas en el almacenamiento local para mantenerlas al recargar la página.
+- **Notificaciones**: Incluir notificaciones para recordar tareas pendientes.
+
+## Contribución
+
+Las contribuciones son bienvenidas. Puedes crear un **fork** del proyecto, hacer tus cambios y enviar un **pull request**.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Puedes ver los detalles en el archivo `LICENSE`.
+
+```
+
+---
+
+Este `README.md` ahora refleja correctamente el uso de Vite. ¡Buena suerte con tu proyecto! 🚀
+
+---
+
+#### Opciones adicionales:
+- **A**: Alternativa README
+```
