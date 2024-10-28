@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { TodoContext } from "./TodoContext";
 import { useParams, useNavigate } from "react-router-dom";
+import styles from "./Styles/EditTodoForm.module.css";
 
 function EditTodoForm() {
   const { todos, editTodo } = useContext(TodoContext); // Asegúrate de tener la función editTodo en tu contexto
@@ -24,13 +25,16 @@ function EditTodoForm() {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className={styles.inputEdit}
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)} // Permite cambiar el valor del input
         placeholder="Editar tarea"
         required
       />
-      <button type="submit">Guardar Cambios</button>
+      <button className={styles.saveButton} type="submit">
+        Editar tarea ✅
+      </button>
     </form>
   );
 }
