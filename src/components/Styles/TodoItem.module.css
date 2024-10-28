@@ -1,183 +1,40 @@
-/* Reset de márgenes y configuración del box-sizing */
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-/* Estilo del header */
-header {
+.todoItem {
   display: flex;
-  background-color: rgb(88, 62, 51);
-  color: rgb(255, 255, 255);
-  padding: 10px;
-  font-size: 29px;
-  border-bottom: 1px solid gray;
-  height: 65px;
-  justify-content: center;
-  align-items: end;
-  font-family: "Bungee Tint", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* Estilo del body */
-body {
-  width: 100%;
-  background-color: #191a1a;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-/* Estilo principal del contenedor */
-main {
-  display: flex;
-  padding: 20px;
-  width: 100%;
-  flex-direction: column;
   align-items: center;
-  background-attachment: fixed;
-  background-image: url("https://i.pinimg.com/1200x/9a/71/98/9a7198621b15929cc14e17d5722490da.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Estilo del botón de tarea */
-.botonTarea {
-  background-color: rgb(233, 103, 47);
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #2a1202;
-}
-
-/* Estilo de la lista */
-ul {
-  display: block;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Estilo de cada item de la lista */
-li {
-  max-width: 455px;
-  margin-bottom: 10px;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  background-color: rgba(40, 33, 33, 0.896);
-  color: navy;
-  display: flex;
   justify-content: space-between;
-  width: 455px;
-  height: auto;
-  word-wrap: break-word;
-  overflow-y: hidden;
-  align-items: center;
-}
-
-/* Estilo del texto de la tarea */
-li .tarea-texto {
-  max-width: 280px;
-  flex: 1;
-  overflow: visible;
-  white-space: normal;
-  font-size: 17px;
-  color: lightblue;
-  word-wrap: break-word;
-}
-
-/* Estilo de botones dentro de ul y li */
-ul button,
-li button {
-  margin-left: 15px;
-  background-color: rgb(233, 233, 237);
-  color: white;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
+  border-bottom: 1px solid #ccc;
 }
 
-/* Estilo para agrupar botones */
-.botones-Juntos {
+.tareaTexto {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.botonesJuntos {
   display: flex;
-  align-items: center;
+  gap: 10px;
 }
 
-/* Estilo para el botón de completado */
-.boton-Completar {
-  background-color: #870404;
+.botonCompletar {
+  color: white;
   border: none;
-  border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
 }
 
-/* Estilo para el SVG dentro del botón */
-.boton-Completar svg {
-  stroke: white; /* Color del icono en el botón */
-  width: 20px; /* Tamaño del icono */
-  height: 20px; /* Tamaño del icono */
+.activo {
+  background-color: green;
 }
 
-/* Estilo cuando el mouse pasa sobre el botón */
-.boton-Completar:hover {
-  background-color: #218838; /* Color de fondo cuando el mouse pasa sobre el botón */
+.incompleto {
+  background-color: red;
 }
 
-/* Estilo cuando la tarea está completada */
-.boton-Completar.activo {
-  background-color: #28a745; /* Color de fondo cuando el botón está activo (completado) */
-}
-
-/* Estilo cuando la tarea no está completada */
-.boton-Completar.incompleto {
-  background-color: #870404; /* Color de fondo cuando no está completado */
-}
-
-/* Estilo para el SVG dentro del botón cuando está activo */
-.boton-Completar.activo svg {
-  stroke: white; /* Color del icono cuando el botón está activo */
-}
-
-/* Estilo del botón de eliminar */
-.boton-Eliminar {
-  background-color: rgb(48, 51, 52);
-  border-radius: 5px;
-  padding: 3px 7px;
-  align-items: center;
-  justify-content: center;
+.botonEliminar {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 5px 10px;
   cursor: pointer;
-}
-
-/* Estilo del SVG dentro del botón de eliminar */
-.boton-Eliminar svg {
-  width: 26px;
-  height: 23px;
-}
-
-/* Estilo cuando pasa el ratón sobre el botón de eliminar */
-.boton-Eliminar:hover {
-  background-color: #870404; /* Color de fondo rojo oscuro al pasar el ratón */
-}
-
-/* Estilos responsivos para pantallas pequeñas */
-@media (max-width: 768px) {
-  body {
-    width: 100%;
-    height: 100%;
-  }
-
-  li {
-    width: 300px; /* Ancho ajustado para pantallas pequeñas */
-  }
 }
