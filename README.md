@@ -1,8 +1,49 @@
-# React + Vite
+Aquí tienes el texto en un solo bloque para que puedas copiar y pegar fácilmente:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# Mi Lista de Tareas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Una aplicación de lista de tareas simple y funcional construida con React. Este proyecto permite a los usuarios agregar, marcar como completadas, y eliminar tareas, además de guardar el estado de la lista en el almacenamiento local para que sea persistente entre sesiones.
+
+## Características
+
+- Agregar y eliminar tareas
+- Marcar tareas como completadas
+- Almacenamiento en `localStorage` para persistencia
+
+## Instalación
+
+Sigue estos pasos para ejecutar la aplicación en tu entorno local:
+
+1. **Clona este repositorio:**
+
+   ```bash
+   git clone https://github.com/tu-usuario/mi-lista-de-tareas.git
+   cd mi-lista-de-tareas
+   ```
+
+2. **Instala las dependencias:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Ejecuta la aplicación:**
+
+   ```bash
+   npm start
+   ```
+
+   Esto abrirá la aplicación en modo de desarrollo en [http://localhost:3000](http://localhost:3000).
+
+## Uso
+
+- En la página principal, puedes ver las tareas actuales, agregar nuevas tareas en el formulario y eliminar o marcar como completadas las tareas existentes.
+- La aplicación guarda automáticamente el estado de la lista en `localStorage`, de modo que cuando vuelvas a cargar la página, las tareas anteriores se mantendrán.
+
+## Tecnologías
+
+- React
+- React Router para navegación
+- Context API para gestión de estado
