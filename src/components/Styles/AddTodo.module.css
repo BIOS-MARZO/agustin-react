@@ -1,0 +1,50 @@
+/* Estilos del formulario */
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espacio entre el input y el botón */
+  padding: 10px;
+  background-color: #f0f4f8; /* Color de fondo suave */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  width: 100%;
+  max-width: 600px; /* Ancho máximo */
+  margin: 0 auto;
+}
+
+/* Estilos del input */
+.input {
+  flex: 1; /* El input se expandirá para ocupar el espacio disponible */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #d1d9e6; /* Bordes suaves */
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.3s ease; /* Transición suave cuando se enfoque */
+}
+
+.input:focus {
+  border-color: #4a90e2; /* Color más vivo cuando el input está en foco */
+}
+
+/* Estilos del botón */
+.button {
+  padding: 10px 20px;
+  background-color: #4a90e2; /* Color del botón */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición de color al hacer hover */
+}
+
+.button:hover {
+  background-color: #357abd; /* Color más oscuro cuando se pasa el ratón */
+}
+
+.button:active {
+  background-color: #2c5b8a; /* Color más oscuro al hacer clic */
+}

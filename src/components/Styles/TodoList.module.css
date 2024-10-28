@@ -1,0 +1,79 @@
+/* Estilos para el contenedor de la lista */
+.list {
+  max-width: 455px;
+  margin-bottom: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: rgba(40, 33, 33, 0.896);
+  color: navy;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 455px;
+  height: auto;
+  word-wrap: break-word;
+  overflow-y: auto;
+  align-items: flex-start;
+}
+
+.list li {
+  width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
+  padding: 10px;
+  background-color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  list-style: none;
+  word-wrap: break-word; /* Si el texto es demasiado largo, sigue en la siguiente línea */
+  overflow-wrap: break-word; /* Corta las palabras largas si es necesario */
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+/* Estilos para cada item individual */
+.item {
+  display: flex; /* Para alinear el contenido en una fila */
+  justify-content: space-between; /* Espacio entre el texto y el botón */
+  align-items: center; /* Centrar verticalmente */
+  padding: 10px 15px; /* Espaciado interno */
+  background-color: #f7f7f7; /* Fondo gris suave */
+  border-radius: 6px; /* Bordes redondeados */
+  margin-bottom: 10px; /* Espaciado entre las tareas */
+  transition: background-color 0.3s ease-in-out; /* Animación suave en hover */
+}
+
+/* Efecto hover para mejorar la interacción */
+.item:hover {
+  background-color: #ececec; /* Cambia el fondo al pasar el ratón */
+}
+
+/* Estilo para el texto de la tarea */
+.text {
+  font-size: 16px; /* Tamaño de letra */
+  color: #333333; /* Color del texto */
+  flex: 1; /* Para que el texto ocupe todo el espacio disponible */
+  cursor: pointer; /* Cambiar el cursor para indicar que se puede hacer clic */
+  text-align: left; /* Alinear el texto a la izquierda */
+  word-break: break-word; /* Permite que el texto se ajuste si es largo */
+}
+
+/* Estilo para tareas completadas */
+.completed {
+  text-decoration: line-through; /* Subraya las tareas completadas */
+  color: #999999; /* Color gris para tareas completadas */
+}
+
+/* Estilo para el botón de eliminar */
+.deleteButton {
+  background-color: #ff4d4d; /* Color rojo para el botón de eliminar */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 8px 12px; /* Espaciado interno del botón */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease-in-out; /* Transición suave */
+}
+
+/* Efecto hover para el botón de eliminar */
+.deleteButton:hover {
+  background-color: #ff6666; /* Color ligeramente más claro al hacer hover */
+}
