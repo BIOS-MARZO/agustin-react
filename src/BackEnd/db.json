@@ -1,20 +1,6 @@
 {
   "todos": [
     {
-      "id": "1",
-      "name": "🛒 Buy groceries",
-      "description": "🥛 Milk, 🍞 Bread, 🥚 Eggs, and 🍏 Fruits",
-      "creator": "Alice",
-      "completed": false
-    },
-    {
-      "id": "2",
-      "name": "📊 Finish project report",
-      "description": "📝 Complete the final report for the project.",
-      "creator": "Bob",
-      "completed": false
-    },
-    {
       "id": "3",
       "name": "🏥 Schedule doctor appointment",
       "description": "󰞯 Annual check-up with Dr. Smith.",
@@ -29,11 +15,11 @@
       "completed": false
     },
     {
-      "id": "5",
-      "name": "📖 Read a book",
-      "description": "📚 Finish reading 'The Great Gatsby'.",
-      "creator": "Ethan",
-      "completed": false
+      "id": "1730411058176",
+      "name": "Hola",
+      "completed": false,
+      "description": "",
+      "creator": "Unknown"
     }
   ]
 }
