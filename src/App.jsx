@@ -11,7 +11,7 @@ function App() {
       <Router>
         <div className={styles.PrincipalContenedor}>
           <div className={styles.App}>
-            <h1>Mi Lista de Tareas</h1>
+            <h1>To Do List</h1>
             <AddTodoForm />
             <Routes>
               <Route path="/" element={<TodoList />} />
