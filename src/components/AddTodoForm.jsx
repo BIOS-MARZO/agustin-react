@@ -14,7 +14,7 @@ function AddTodoForm() {
   function handleSubmit(event) {
     event.preventDefault();
     if (inputValue.trim() !== "") {
-      addTodo(inputValue); // Pasar el texto a la función addTodo
+      addTodo(inputValue); // Asegúrate de que 'inputValue' se use como 'name'
       setInputValue(""); // Limpiar el campo de entrada
       inputRef.current.focus(); // Enfocar el input después de agregar la tarea
     }
@@ -23,7 +23,7 @@ function AddTodoForm() {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <input
-        type="text"
+        type="name"
         value={inputValue}
         onChange={handleInputChange}
         placeholder="Agregar nueva tarea"

@@ -1,5 +1,6 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 // 1. Crear el contexto
 export const TodoContext = createContext();
@@ -9,7 +10,7 @@ const ADD_TODO = "ADD_TODO";
 const TOGGLE_COMPLETE = "TOGGLE_COMPLETE";
 const DELETE_TODO = "DELETE_TODO";
 const SET_TODOS = "SET_TODOS";
-const EDIT_TODO = "EDIT_TODO"; // Nueva acción para editar
+const EDIT_TODO = "EDIT_TODO";
 
 // Reducer
 function todoReducer(state, action) {
@@ -17,7 +18,7 @@ function todoReducer(state, action) {
     case ADD_TODO:
       return [
         ...state,
-        { id: Date.now(), text: action.payload, completed: false },
+        { id: action.payload.id, name: action.payload.name, completed: false },
       ];
     case TOGGLE_COMPLETE:
       return state.map((todo) =>
@@ -29,10 +30,10 @@ function todoReducer(state, action) {
       return state.filter((todo) => todo.id !== action.payload);
     case SET_TODOS:
       return action.payload;
-    case EDIT_TODO: // Maneja la acción EDIT_TODO
+    case EDIT_TODO:
       return state.map((todo) =>
         todo.id === action.payload.id
-          ? { ...todo, text: action.payload.text }
+          ? { ...todo, name: action.payload.name }
           : todo
       );
     default:
@@ -42,37 +43,94 @@ function todoReducer(state, action) {
 
 // 4. Crear el proveedor del contexto con useReducer
 export function TodoProvider({ children }) {
-  // Inicializar `todos` con el contenido de localStorage
-  const initialTodos = () => JSON.parse(localStorage.getItem("todos")) || [];
-  const [todos, dispatch] = useReducer(todoReducer, [], initialTodos);
+  const [todos, dispatch] = useReducer(todoReducer, []);
+  const initialTodos = useRef([]); // Guardamos los datos originales
 
-  // Guardar los todos en localStorage cada vez que cambien
+  // Fetch inicial de todos desde el servidor
   useEffect(() => {
-    console.log("Guardando todos en localStorage:", todos);
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+    const fetchTodos = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/todos");
+        dispatch({ type: SET_TODOS, payload: response.data });
+        initialTodos.current = response.data; // Guardamos la lista inicial
+      } catch (error) {
+        console.error("Error fetching todos:", error);
+      }
+    };
+    fetchTodos();
+  }, []);
 
-  // Funciones de acción
-  function addTodo(text) {
-    dispatch({ type: ADD_TODO, payload: text });
-  }
+  const addTodo = async (name, description = "", creator = "Unknown") => {
+    const newTodo = {
+      id: Date.now().toString(),
+      name,
+      completed: false,
+      description,
+      creator,
+    };
+    try {
+      await axios.post("http://localhost:3000/todos", newTodo);
+      dispatch({ type: ADD_TODO, payload: newTodo });
+    } catch (error) {
+      console.error("Error adding todo:", error);
+    }
+  };
 
-  function toggleComplete(id) {
-    dispatch({ type: TOGGLE_COMPLETE, payload: id });
-  }
+  // Función para cambiar el estado de completado
+  const toggleComplete = async (id) => {
+    const todo = todos.find((todo) => todo.id === id);
+    try {
+      await axios.put(`http://localhost:3000/todos/${id}`, {
+        ...todo,
+        completed: !todo.completed,
+      });
+      dispatch({ type: TOGGLE_COMPLETE, payload: id });
+    } catch (error) {
+      console.error("Error toggling todo:", error);
+    }
+  };
 
-  function deleteTodo(id) {
-    dispatch({ type: DELETE_TODO, payload: id });
-  }
+  // Función para eliminar una tarea
+  const deleteTodo = async (id) => {
+    console.log("Eliminando todo con ID:", id); // Para depuración, verifica el ID
+    try {
+      await axios.delete(`http://localhost:3000/todos/${id}`);
+      dispatch({ type: DELETE_TODO, payload: id });
+    } catch (error) {
+      console.error("Error deleting todo:", error);
+    }
+  };
 
-  function editTodo(id, text) {
-    // Nueva función editTodo
-    dispatch({ type: EDIT_TODO, payload: { id, text } });
-  }
+  // Función para editar una tarea
+  const editTodo = async (id, name) => {
+    const updatedTodo = { ...todos.find((todo) => todo.id === id), name };
+    try {
+      await axios.put(`http://localhost:3000/todos/${id}`, updatedTodo);
+      dispatch({ type: EDIT_TODO, payload: { id, name } });
+    } catch (error) {
+      console.error("Error editing todo:", error);
+    }
+  };
 
-  const value = { todos, addTodo, toggleComplete, deleteTodo, editTodo };
+  // Función para restaurar las tareas desde los datos originales
+  const restoreTodos = () => {
+    dispatch({ type: SET_TODOS, payload: initialTodos.current });
+  };
 
-  return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
+  return (
+    <TodoContext.Provider
+      value={{
+        todos,
+        addTodo,
+        toggleComplete,
+        deleteTodo,
+        editTodo,
+        restoreTodos,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
 }
 
 // Valida las props

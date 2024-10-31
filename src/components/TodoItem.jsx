@@ -1,38 +1,34 @@
 import { FaCheck, FaTrash, FaEdit } from "react-icons/fa";
 import PropTypes from "prop-types";
 import styles from "./Styles/TodoItem.module.css";
-import { Link } from "react-router-dom"; // Importa Link de react-router-dom
+import { Link } from "react-router-dom";
 
-function TodoItem({ todo, toggleComplete, deleteTodo }) {
-  const handleToggleComplete = () => {
-    toggleComplete(todo.id);
-  };
-
-  const handleDeleteTodo = () => {
-    deleteTodo(todo.id);
-  };
+function TodoItem({
+  todo: { id, name = "Tarea sin nombre", completed = false }, // Valor por defecto para name
+  toggleComplete,
+  deleteTodo,
+}) {
+  const handleToggleComplete = () => toggleComplete(id);
+  const handleDeleteTodo = () => deleteTodo(id);
 
   return (
     <li className={styles.todoItem}>
-      <span className={styles.tareaTexto}>{todo.text}</span>
+      <span className={styles.tareaTexto}>{name}</span>
       <div className={styles.botonesJuntos}>
         <button
           className={`${styles.botonCompletar} ${
-            todo.completed ? styles.activo : styles.incompleto
+            completed ? styles.activo : styles.incompleto
           }`}
           onClick={handleToggleComplete}
-          aria-label={`Marcar como ${
-            todo.completed ? "incompleto" : "completo"
-          }`}
+          aria-label={`Marcar como ${completed ? "incompleto" : "completo"}`}
         >
           <FaCheck />
         </button>
-        <Link to={`/edit/${todo.id}`} aria-label="Editar tarea">
+        <Link to={`/edit/${id}`} aria-label="Editar tarea">
           <button className={styles.botonEditar}>
             <FaEdit />
           </button>
         </Link>
-
         <button
           className={styles.botonEliminar}
           onClick={handleDeleteTodo}
@@ -49,7 +45,7 @@ function TodoItem({ todo, toggleComplete, deleteTodo }) {
 TodoItem.propTypes = {
   todo: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    text: PropTypes.string.isRequired,
+    name: PropTypes.string, // Hacemos que name no sea obligatorio
     completed: PropTypes.bool.isRequired,
   }).isRequired,
   toggleComplete: PropTypes.func.isRequired,
