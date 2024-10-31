@@ -54,7 +54,7 @@ Asegúrate de tener instalados los siguientes programas antes de comenzar:
 ## Estructura del Proyecto
 
 - **`src/`**: Contiene todos los archivos de la aplicación.
-  - **`components/`**: Componentes de React como `TaskItem`, `TaskList`, y `AddTask`.
+  - **`components/`**: Componentes de React como `AddTodoForm`, `TodoContext`, `TodoList`, `TodoItem` y `EditTodoForm`.
   - **`App.jsx`**: Componente principal de la aplicación.
   - **`main.jsx`**: Punto de entrada de React.
 
@@ -68,7 +68,6 @@ Asegúrate de tener instalados los siguientes programas antes de comenzar:
 ## Próximas Mejoras
 
 - **Filtros de Búsqueda**: Añadir un filtro para buscar tareas por nombre o estado (completado/pendiente).
-- **Almacenamiento Local**: Guardar las tareas en el almacenamiento local para mantenerlas al recargar la página.
 - **Notificaciones**: Incluir notificaciones para recordar tareas pendientes.
 
 ## Contribución
@@ -81,12 +80,4 @@ Este proyecto está bajo la licencia MIT. Puedes ver los detalles en el archivo 
 
 ```
 
----
-
-Este `README.md` ahora refleja correctamente el uso de Vite. ¡Buena suerte con tu proyecto! 🚀
-
----
-
-#### Opciones adicionales:
-- **A**: Alternativa README
 ```
