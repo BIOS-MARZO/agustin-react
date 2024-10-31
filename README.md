@@ -1,8 +1,8 @@
-Perfecto. Si el proyecto está configurado con **Vite** en lugar de Create React App, solo es necesario ajustar algunos comandos en el `README.md`. Aquí tienes el ejemplo actualizado:
+Proyecto **Vite** con React para `BIOS`.
 
 ---
 
-## Ejemplo de `README.md` para un Proyecto To-Do List en React con Vite
+## TO DO LIST REACT PROYECT
 
 ````markdown
 # To-Do List
