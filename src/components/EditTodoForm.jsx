@@ -32,7 +32,7 @@ function EditTodoForm() {
       <input
         className={styles.inputEdit}
         type="name"
-        value={name} // Usa 'name' en lugar de 'text'
+        value={name}
         onChange={(e) => setName(e.target.value)} // Permite cambiar el valor del input
         placeholder="Editar tarea"
         required

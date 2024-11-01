@@ -12,32 +12,34 @@ function TodoItem({
   const handleDeleteTodo = () => deleteTodo(id);
 
   return (
-    <li className={styles.todoItem}>
-      <span className={styles.tareaTexto}>{name}</span>
-      <div className={styles.botonesJuntos}>
-        <button
-          className={`${styles.botonCompletar} ${
-            completed ? styles.activo : styles.incompleto
-          }`}
-          onClick={handleToggleComplete}
-          aria-label={`Marcar como ${completed ? "incompleto" : "completo"}`}
-        >
-          <FaCheck />
-        </button>
-        <Link to={`/edit/${id}`} aria-label="Editar tarea">
-          <button className={styles.botonEditar}>
-            <FaEdit />
+    <div className={styles.containerText}>
+      <li className={styles.todoItem}>
+        <span className={styles.tareaTexto}>{name}</span>
+        <div className={styles.botonesJuntos}>
+          <button
+            className={`${styles.botonCompletar} ${
+              completed ? styles.activo : styles.incompleto
+            }`}
+            onClick={handleToggleComplete}
+            aria-label={`Marcar como ${completed ? "incompleto" : "completo"}`}
+          >
+            <FaCheck />
           </button>
-        </Link>
-        <button
-          className={styles.botonEliminar}
-          onClick={handleDeleteTodo}
-          aria-label="Eliminar tarea"
-        >
-          <FaTrash />
-        </button>
-      </div>
-    </li>
+          <Link to={`/edit/${id}`} aria-label="Editar tarea">
+            <button className={styles.botonEditar}>
+              <FaEdit />
+            </button>
+          </Link>
+          <button
+            className={styles.botonEliminar}
+            onClick={handleDeleteTodo}
+            aria-label="Eliminar tarea"
+          >
+            <FaTrash />
+          </button>
+        </div>
+      </li>
+    </div>
   );
 }
 

@@ -92,7 +92,7 @@ export function TodoProvider({ children }) {
 
   // Función para eliminar una tarea
   const deleteTodo = async (id) => {
-    console.log("Eliminando todo con ID:", id); // Para depuración, verifica el ID
+    console.log("Eliminando todo con ID:", id);
     try {
       await axios.delete(`http://localhost:3000/todos/${id}`);
       dispatch({ type: DELETE_TODO, payload: id });
