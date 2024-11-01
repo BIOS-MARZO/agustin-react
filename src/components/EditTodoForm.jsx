@@ -10,11 +10,11 @@ function EditTodoForm() {
 
   // Encuentra la tarea por ID
   const todo = todos.find((todo) => todo.id === id);
-  const [name, setName] = useState(""); // Cambia 'text' a 'name'
+  const [name, setName] = useState("");
 
   useEffect(() => {
     if (todo) {
-      setName(todo.name); // Usa 'name' en lugar de 'text'
+      setName(todo.name);
     }
   }, [todo]);
 

@@ -106,7 +106,7 @@ export function TodoProvider({ children }) {
     const updatedTodo = { ...todos.find((todo) => todo.id === id), name };
     try {
       await axios.put(`http://localhost:3000/todos/${id}`, updatedTodo);
-      dispatch({ type: EDIT_TODO, payload: { id, name } });
+      dispatch({ type: EDIT_TODO, payload: updatedTodo });
     } catch (error) {
       console.error("Error editing todo:", error);
     }
