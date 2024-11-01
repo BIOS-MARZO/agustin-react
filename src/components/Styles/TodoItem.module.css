@@ -35,13 +35,14 @@
   flex: 1;
   overflow: visible;
   white-space: normal;
-  font-size: 17px;
+  font-size: 15px;
   color: whitesmoke;
   word-wrap: break-word;
-  margin-right: 8px;
 }
 
 .botonesJuntos {
+  width: 80%; /* Ajusta el valor según lo necesario */
+  max-width: 160px; /* Tamaño máximo */
   display: flex;
   gap: 10px;
   justify-content: flex-end;
@@ -100,6 +101,15 @@
     gap: 5px;
   }
 
+  .botonesJuntos .botonCompletar,
+  .botonesJuntos .botonEditar,
+  .botonesJuntos .botonEliminar {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    padding: 5px;
+  }
+
   .containerText {
     width: 100%;
     max-width: 100%;
@@ -110,6 +120,7 @@
   }
 
   .tareaTexto {
-    max-width: 175px;
+    width: 100%; /* Ajusta el valor según lo necesario */
+    max-width: 160px; /* Tamaño máximo */
   }
 }
