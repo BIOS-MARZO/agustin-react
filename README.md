@@ -80,4 +80,12 @@ Este proyecto está bajo la licencia MIT. Puedes ver los detalles en el archivo 
 
 ```
 
+---
+
+Este `README.md` ahora refleja correctamente el uso de Vite. ¡Buena suerte con tu proyecto! 🚀
+
+---
+
+#### Opciones adicionales:
+- **A**: Alternativa README
 ```

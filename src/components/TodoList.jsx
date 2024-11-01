@@ -7,16 +7,24 @@ function TodoList() {
   const { todos, deleteTodo, toggleComplete } = useContext(TodoContext);
 
   return (
-    <ul className={styles.list}>
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          deleteTodo={deleteTodo}
-          toggleComplete={toggleComplete}
-        />
-      ))}
-    </ul>
+    <div className={styles.containerToDoList}>
+      {" "}
+      {/* Corrige aquí */}
+      <ul className={styles.list}>
+        {todos.length === 0 ? (
+          <li>No hay tareas disponibles</li>
+        ) : (
+          todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              deleteTodo={deleteTodo}
+              toggleComplete={toggleComplete}
+            />
+          ))
+        )}
+      </ul>
+    </div>
   );
 }
 
