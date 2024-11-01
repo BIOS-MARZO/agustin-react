@@ -1,35 +1,35 @@
-Proyecto **Vite** con React para `BIOS`.
+# Proyecto **Vite** con React para `BIOS`
 
 ---
 
-## TO DO LIST REACT PROYECT
+## TO DO LIST REACT PROJECT
 
-````markdown
-# To-Do List
+### To-Do List
 
 Una aplicación simple de **To-Do List** desarrollada en React y configurada con **Vite**. Permite a los usuarios agregar, marcar como completadas y eliminar tareas. Este proyecto es ideal para comprender los conceptos básicos de React, como componentes, estado y eventos, usando Vite para un entorno de desarrollo más rápido.
 
-## Características
+### Características
 
 - **Añadir Tareas:** Permite agregar nuevas tareas a la lista.
 - **Marcar Completadas:** Posibilidad de marcar tareas como completadas.
 - **Eliminar Tareas:** Función para eliminar tareas individuales.
 - **Interfaz Intuitiva:** Fácil de usar y adaptada para dispositivos móviles.
 
-## Requisitos Previos
+### Requisitos Previos
 
 Asegúrate de tener instalados los siguientes programas antes de comenzar:
 
 - **Node.js**: [Descargar aquí](https://nodejs.org/)
 - **npm**: Node Package Manager, que viene incluido con Node.js.
 
-## Instrucciones de Instalación
+### Instrucciones de Instalación
 
 1. **Clonar el Repositorio:**
+
    ```bash
    git clone git@github.com:AgustinVelazquez0/ReactToDoList.git
+
    ```
-````
 
 2. **Navegar al Directorio del Proyecto:**
 
