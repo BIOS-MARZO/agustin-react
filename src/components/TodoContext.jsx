@@ -112,11 +112,6 @@ export function TodoProvider({ children }) {
     }
   };
 
-  // Función para restaurar las tareas desde los datos originales
-  const restoreTodos = () => {
-    dispatch({ type: SET_TODOS, payload: initialTodos.current });
-  };
-
   return (
     <TodoContext.Provider
       value={{
@@ -125,7 +120,6 @@ export function TodoProvider({ children }) {
         toggleComplete,
         deleteTodo,
         editTodo,
-        restoreTodos,
       }}
     >
       {children}

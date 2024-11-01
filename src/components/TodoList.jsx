@@ -4,8 +4,7 @@ import { TodoContext } from "/src/components/TodoContext.jsx"; // Asegúrate de 
 import styles from "./Styles/TodoList.module.css";
 
 function TodoList() {
-  const { todos, deleteTodo, toggleComplete, restoreTodos } =
-    useContext(TodoContext);
+  const { todos, deleteTodo, toggleComplete } = useContext(TodoContext);
 
   return (
     <div className={styles.containerToDoList}>
@@ -25,10 +24,6 @@ function TodoList() {
           ))
         )}
       </ul>
-      {/* Botón para restaurar las tareas desde db.json */}
-      <button onClick={restoreTodos} className={styles.restoreButton}>
-        Restaurar Tareas
-      </button>
     </div>
   );
 }
