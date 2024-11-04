@@ -21,7 +21,6 @@ function EditTodoForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name.trim() !== "") {
-      // Asegúrate de que el nombre no esté vacío
       editTodo(todo.id, name); // Llama a la función editTodo para actualizar el nombre
       navigate("/"); // Redirige de vuelta a la lista principal después de editar
     }

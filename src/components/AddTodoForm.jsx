@@ -1,5 +1,5 @@
 import { useContext, useState, useRef } from "react";
-import { TodoContext } from "./TodoContext"; // Asegúrate de ajustar la ruta
+import { TodoContext } from "./TodoContext";
 import styles from "./Styles/AddTodo.module.css";
 
 function AddTodoForm() {
@@ -14,7 +14,7 @@ function AddTodoForm() {
   function handleSubmit(event) {
     event.preventDefault();
     if (inputValue.trim() !== "") {
-      addTodo(inputValue); // Asegúrate de que 'inputValue' se use como 'name'
+      addTodo(inputValue);
       setInputValue(""); // Limpiar el campo de entrada
       inputRef.current.focus(); // Enfocar el input después de agregar la tarea
     }

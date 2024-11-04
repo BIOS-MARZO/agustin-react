@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { TodoProvider } from "/src/components/TodoContext.jsx"; // Ajusta la ruta según tu estructura
-import TodoList from "/src/components/TodoList.jsx"; // Ajusta la ruta según tu estructura
-import AddTodoForm from "/src/components/AddTodoForm.jsx"; // Asegúrate de incluir tu componente para agregar tareas
-import styles from "./App.module.css"; // Importa el módulo CSS
+import { TodoProvider } from "/src/components/TodoContext.jsx"; 
+import TodoList from "/src/components/TodoList.jsx"; 
+import AddTodoForm from "/src/components/AddTodoForm.jsx"; 
+import styles from "./App.module.css"; 
 import EditTodoForm from "/src/components/EditTodoForm.jsx";
 
 function App() {

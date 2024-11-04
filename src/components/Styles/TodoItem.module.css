@@ -41,8 +41,8 @@
 }
 
 .botonesJuntos {
-  width: 80%; /* Ajusta el valor según lo necesario */
-  max-width: 160px; /* Tamaño máximo */
+  width: 80%;
+  max-width: 160px;
   display: flex;
   gap: 10px;
   justify-content: flex-end;
@@ -120,7 +120,7 @@
   }
 
   .tareaTexto {
-    width: 100%; /* Ajusta el valor según lo necesario */
-    max-width: 160px; /* Tamaño máximo */
+    width: 100%;
+    max-width: 160px;
   }
 }

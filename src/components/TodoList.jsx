@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import TodoItem from "/src/components/TodoItem.jsx";
-import { TodoContext } from "/src/components/TodoContext.jsx"; // Asegúrate de que la ruta sea correcta
+import { TodoContext } from "/src/components/TodoContext.jsx";
 import styles from "./Styles/TodoList.module.css";
 
 function TodoList() {
