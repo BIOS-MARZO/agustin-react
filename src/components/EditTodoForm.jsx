@@ -12,6 +12,7 @@ function EditTodoForm() {
   const todo = todos.find((todo) => todo.id === id);
   const [name, setName] = useState("");
 
+  // Verificamos si existe el ID
   useEffect(() => {
     if (todo) {
       setName(todo.name);
@@ -20,6 +21,7 @@ function EditTodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Verificamos que no esté vacio el campo
     if (name.trim() !== "") {
       editTodo(todo.id, name); // Llama a la función editTodo para actualizar el nombre
       navigate("/"); // Redirige de vuelta a la lista principal después de editar

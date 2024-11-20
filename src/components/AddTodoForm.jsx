@@ -2,6 +2,7 @@ import { useContext, useState, useRef } from "react";
 import { TodoContext } from "./TodoContext";
 import styles from "./Styles/AddTodo.module.css";
 
+// Agregar nuevas tareas a la lista
 function AddTodoForm() {
   const { addTodo } = useContext(TodoContext); // Usar el contexto para obtener addTodo
   const [inputValue, setInputValue] = useState("");

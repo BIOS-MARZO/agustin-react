@@ -9,7 +9,6 @@ function TodoList() {
   return (
     <div className={styles.containerToDoList}>
       {" "}
-      {/* Corrige aquí */}
       <ul className={styles.list}>
         {todos.length === 0 ? (
           <li>No hay tareas disponibles</li>
