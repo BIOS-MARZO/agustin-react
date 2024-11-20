@@ -25,7 +25,6 @@ function TodoItem({
           >
             <FaCheck />
           </button>
-          */ Redirigimos/*
           <Link to={`/edit/${id}`} aria-label="Editar tarea">
             <button className={styles.botonEditar}>
               <FaEdit />
