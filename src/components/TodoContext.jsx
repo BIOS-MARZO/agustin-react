@@ -18,22 +18,26 @@ function todoReducer(state, action) {
     case ADD_TODO:
       return [
         ...state,
-        { id: action.payload.id, name: action.payload.name, completed: false },
+        {
+          _id: action.payload._id,
+          title: action.payload.title,
+          completed: false,
+        },
       ];
     case TOGGLE_COMPLETE:
       return state.map((todo) =>
-        todo.id === action.payload
+        todo._id === action.payload
           ? { ...todo, completed: !todo.completed }
           : todo
       );
     case DELETE_TODO:
-      return state.filter((todo) => todo.id !== action.payload);
+      return state.filter((todo) => todo._id !== action.payload);
     case SET_TODOS:
       return action.payload;
     case EDIT_TODO:
       return state.map((todo) =>
-        todo.id === action.payload.id
-          ? { ...todo, name: action.payload.name }
+        todo._id === action.payload._id
+          ? { ...todo, title: action.payload.title }
           : todo
       );
     default:
@@ -50,7 +54,7 @@ export function TodoProvider({ children }) {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/todos");
+        const response = await axios.get("http://localhost:5000/todos");
         dispatch({ type: SET_TODOS, payload: response.data });
         initialTodos.current = response.data; // Guardamos la lista inicial
       } catch (error) {
@@ -60,52 +64,55 @@ export function TodoProvider({ children }) {
     fetchTodos();
   }, []);
 
-  const addTodo = async (name, description = "", creator = "Unknown") => {
+  const addTodo = async (title) => {
     const newTodo = {
-      id: Date.now().toString(),
-      name,
+      title,
       completed: false,
-      description,
-      creator,
     };
+
     try {
-      await axios.post("http://localhost:3000/todos", newTodo);
-      dispatch({ type: ADD_TODO, payload: newTodo });
+      // Envia la tarea al backend
+      const response = await axios.post("http://localhost:5000/todos", newTodo);
+
+      // Inmediatamente actualizamos el estado con la nueva tarea
+      dispatch({ type: ADD_TODO, payload: response.data });
     } catch (error) {
       console.error("Error adding todo:", error);
     }
   };
 
   // Función para cambiar el estado de completado
-  const toggleComplete = async (id) => {
-    const todo = todos.find((todo) => todo.id === id);
+  const toggleComplete = async (_id) => {
+    // Cambio de id a _id
+    const todo = todos.find((todo) => todo._id === _id); // Cambio de id a _id
     try {
-      await axios.put(`http://localhost:3000/todos/${id}`, {
+      await axios.put(`http://localhost:5000/todos/${_id}`, {
         ...todo,
         completed: !todo.completed,
       });
-      dispatch({ type: TOGGLE_COMPLETE, payload: id });
+      dispatch({ type: TOGGLE_COMPLETE, payload: _id }); // Cambio de id a _id
     } catch (error) {
       console.error("Error toggling todo:", error);
     }
   };
 
   // Función para eliminar una tarea
-  const deleteTodo = async (id) => {
-    console.log("Eliminando todo con ID:", id);
+  const deleteTodo = async (_id) => {
+    // Cambio de id a _id
+    console.log("Eliminando todo con ID:", _id);
     try {
-      await axios.delete(`http://localhost:3000/todos/${id}`);
-      dispatch({ type: DELETE_TODO, payload: id });
+      await axios.delete(`http://localhost:5000/todos/${_id}`);
+      dispatch({ type: DELETE_TODO, payload: _id });
     } catch (error) {
       console.error("Error deleting todo:", error);
     }
   };
 
   // Función para editar una tarea
-  const editTodo = async (id, name) => {
-    const updatedTodo = { ...todos.find((todo) => todo.id === id), name };
+  const editTodo = async (_id, title) => {
+    const updatedTodo = { ...todos.find((todo) => todo._id === _id), title };
     try {
-      await axios.put(`http://localhost:3000/todos/${id}`, updatedTodo);
+      await axios.put(`http://localhost:5000/todos/${_id}`, updatedTodo);
       dispatch({ type: EDIT_TODO, payload: updatedTodo });
     } catch (error) {
       console.error("Error editing todo:", error);
