@@ -4,17 +4,23 @@ import styles from "./Styles/TodoItem.module.css";
 import { Link } from "react-router-dom";
 
 function TodoItem({
-  todo: { id, name = "Tarea sin nombre", completed = false }, // Valor por defecto para name
+  todo: { _id, title = "Tarea sin nombre", completed = false },
   toggleComplete,
   deleteTodo,
 }) {
-  const handleToggleComplete = () => toggleComplete(id);
-  const handleDeleteTodo = () => deleteTodo(id);
+  const handleToggleComplete = () => toggleComplete(_id);
+  const handleDeleteTodo = () => deleteTodo(_id);
 
   return (
     <div className={styles.containerText}>
       <li className={styles.todoItem}>
-        <span className={styles.tareaTexto}>{name}</span>
+        <span
+          className={`${styles.tareaTexto} ${
+            completed ? styles.completed : ""
+          }`}
+        >
+          {title}
+        </span>
         <div className={styles.botonesJuntos}>
           <button
             className={`${styles.botonCompletar} ${
@@ -25,7 +31,7 @@ function TodoItem({
           >
             <FaCheck />
           </button>
-          <Link to={`/edit/${id}`} aria-label="Editar tarea">
+          <Link to={`/edit/${_id}`} aria-label="Editar tarea">
             <button className={styles.botonEditar}>
               <FaEdit />
             </button>
@@ -46,8 +52,8 @@ function TodoItem({
 // Validación de propiedades con PropTypes
 TodoItem.propTypes = {
   todo: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    name: PropTypes.string, // Hacemos que name no sea obligatorio
+    _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    title: PropTypes.string,
     completed: PropTypes.bool.isRequired,
   }).isRequired,
   toggleComplete: PropTypes.func.isRequired,

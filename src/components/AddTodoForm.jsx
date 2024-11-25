@@ -14,17 +14,19 @@ function AddTodoForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (inputValue.trim() !== "") {
-      addTodo(inputValue);
-      setInputValue(""); // Limpiar el campo de entrada
-      inputRef.current.focus(); // Enfocar el input después de agregar la tarea
+    if (inputValue.trim() === "") {
+      alert("Por favor, ingresa una tarea.");
+      return;
     }
+    addTodo(inputValue); // Agregar la tarea
+    setInputValue(""); // Limpiar el campo de entrada
+    inputRef.current.focus(); // Enfocar el input después de agregar la tarea
   }
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <input
-        type="name"
+        type="text" // Corregido a "text"
         value={inputValue}
         onChange={handleInputChange}
         placeholder="Agregar nueva tarea"

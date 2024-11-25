@@ -5,43 +5,50 @@ import styles from "./Styles/EditTodoForm.module.css";
 
 function EditTodoForm() {
   const { todos, editTodo } = useContext(TodoContext);
-  const { id } = useParams();
+  const { _id } = useParams(); // Captura el _id de la URL
   const navigate = useNavigate();
 
-  // Encuentra la tarea por ID
-  const todo = todos.find((todo) => todo.id === id);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); // Estado para el nombre de la tarea
+  const [error, setError] = useState(""); // Estado para mensajes de error
 
-  // Verificamos si existe el ID
+  // Encuentra la tarea asociada al _id
   useEffect(() => {
+    const todo = todos.find((todo) => todo._id === _id); // Busca la tarea por _id
     if (todo) {
-      setName(todo.name);
+      setName(todo.name); // Si se encuentra, establece el estado inicial
+    } else {
+      setError("Tarea no encontrada."); // Muestra un error si no se encuentra la tarea
     }
-  }, [todo]);
+  }, [_id, todos]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Verificamos que no esté vacio el campo
-    if (name.trim() !== "") {
-      editTodo(todo.id, name); // Llama a la función editTodo para actualizar el nombre
-      navigate("/"); // Redirige de vuelta a la lista principal después de editar
+    if (name.trim() === "") {
+      setError("El nombre de la tarea no puede estar vacío."); // Mensaje de validación
+      return;
     }
+
+    editTodo(_id, name); // Actualiza la tarea usando _id
+    navigate("/"); // Redirige a la lista principal
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        className={styles.inputEdit}
-        type="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)} // Permite cambiar el valor del input
-        placeholder="Editar tarea"
-        required
-      />
-      <button className={styles.saveButton} type="submit">
-        Editar tarea ✅
-      </button>
-    </form>
+    <div className={styles.editFormContainer}>
+      {error && <p className={styles.error}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input
+          className={styles.inputEdit}
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)} // Permite cambiar el valor del input
+          placeholder="Editar tarea"
+          required
+        />
+        <button className={styles.saveButton} type="submit">
+          Editar tarea ✅
+        </button>
+      </form>
+    </div>
   );
 }
 
