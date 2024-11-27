@@ -54,9 +54,14 @@ Asegúrate de tener instalados los siguientes programas antes de comenzar:
 ## Estructura del Proyecto
 
 - **`src/`**: Contiene todos los archivos de la aplicación.
+
   - **`components/`**: Componentes de React como `AddTodoForm`, `TodoContext`, `TodoList`, `TodoItem` y `EditTodoForm`.
   - **`App.jsx`**: Componente principal de la aplicación.
   - **`main.jsx`**: Punto de entrada de React.
+
+  ## Back-End con MongoDB
+
+  Además, he desarrollado un back-end para este proyecto utilizando MongoDB, el cual se encuentra en un repositorio separado y público. Este back-end permite la persistencia de datos, como las tareas creadas por los usuarios. Puedes explorar ese repositorio en el siguiente enlace: `https://github.com/AgustinVelazquez0/todo-list-api`
 
 ## Tecnologías Utilizadas
 
@@ -73,19 +78,3 @@ Asegúrate de tener instalados los siguientes programas antes de comenzar:
 ## Contribución
 
 Las contribuciones son bienvenidas. Puedes crear un **fork** del proyecto, hacer tus cambios y enviar un **pull request**.
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT. Puedes ver los detalles en el archivo `LICENSE`.
-
-```
-
----
-
-Este `README.md` ahora refleja correctamente el uso de Vite. ¡Buena suerte con tu proyecto! 🚀
-
----
-
-#### Opciones adicionales:
-- **A**: Alternativa README
-```
