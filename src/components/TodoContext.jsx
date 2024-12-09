@@ -50,71 +50,96 @@ export function TodoProvider({ children }) {
   const [todos, dispatch] = useReducer(todoReducer, []);
   const initialTodos = useRef([]); // Guardamos los datos originales
 
+  // Crear una instancia de Axios
+  const axiosInstance = axios.create({
+    baseURL: "http://localhost:5000",
+  });
+
+  // Añadir el interceptor para incluir el token
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
   // Fetch inicial de todos desde el servidor
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/todos");
+        const response = await axiosInstance.get("/todos");
         dispatch({ type: SET_TODOS, payload: response.data });
         initialTodos.current = response.data; // Guardamos la lista inicial
       } catch (error) {
-        console.error("Error fetching todos:", error);
+        console.error(
+          "Error fetching todos:",
+          error.response?.data || error.message
+        );
       }
     };
     fetchTodos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addTodo = async (title) => {
-    const newTodo = {
-      title,
-      completed: false,
-    };
+    const newTodo = { title, completed: false };
 
     try {
-      // Envia la tarea al backend
-      const response = await axios.post("http://localhost:5000/todos", newTodo);
-
-      // Inmediatamente actualizamos el estado con la nueva tarea
+      const response = await axiosInstance.post("/todos", newTodo);
       dispatch({ type: ADD_TODO, payload: response.data });
     } catch (error) {
-      console.error("Error adding todo:", error);
+      console.error(
+        "Error adding todo:",
+        error.response?.data || error.message
+      );
     }
   };
 
-  // Función para cambiar el estado de completado
   const toggleComplete = async (_id) => {
     const todo = todos.find((todo) => todo._id === _id);
+    if (!todo) return;
+
     try {
-      await axios.put(`http://localhost:5000/todos/${_id}`, {
+      await axiosInstance.put(`/todos/${_id}`, {
         ...todo,
         completed: !todo.completed,
       });
       dispatch({ type: TOGGLE_COMPLETE, payload: _id });
     } catch (error) {
-      console.error("Error toggling todo:", error);
+      console.error(
+        "Error toggling todo:",
+        error.response?.data || error.message
+      );
     }
   };
 
-  // Función para eliminar una tarea
   const deleteTodo = async (_id) => {
-    // Cambio de id a _id
-    console.log("Eliminando todo con ID:", _id);
     try {
-      await axios.delete(`http://localhost:5000/todos/${_id}`);
+      await axiosInstance.delete(`/todos/${_id}`);
       dispatch({ type: DELETE_TODO, payload: _id });
     } catch (error) {
-      console.error("Error deleting todo:", error);
+      console.error(
+        "Error deleting todo:",
+        error.response?.data || error.message
+      );
     }
   };
 
-  // Función para editar una tarea
   const editTodo = async (_id, title) => {
     const updatedTodo = { ...todos.find((todo) => todo._id === _id), title };
+
     try {
-      await axios.put(`http://localhost:5000/todos/${_id}`, updatedTodo);
+      await axiosInstance.put(`/todos/${_id}`, updatedTodo);
       dispatch({ type: EDIT_TODO, payload: updatedTodo });
     } catch (error) {
-      console.error("Error editing todo:", error);
+      console.error(
+        "Error editing todo:",
+        error.response?.data || error.message
+      );
     }
   };
 
@@ -133,7 +158,7 @@ export function TodoProvider({ children }) {
   );
 }
 
-// Valida las props
+// Validar las props
 TodoProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
